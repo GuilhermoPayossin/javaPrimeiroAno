@@ -10,12 +10,13 @@ public class Ex6 {
 		populateArray(array);
 		
 		System.out.print("Matriz populada: ");
+		System.out.println();
 		print(array);
 		
 		highest = highestValuePerLine(array);
-		print(maior);
+		System.out.print("Maior valor em cada linha: ");
+		print(highest);
 		
-		System.out.println("Maior valor em cada linha: ");
 		highestValuePerLine(array);
 		
 	}
@@ -29,6 +30,12 @@ public class Ex6 {
 		}
 	}
 	
+	public static void print (int[] array) {
+		for (int i : array) {
+			System.out.print(i + " ");
+		}
+	}
+	
 	public static void populateArray (int[][] array) {
 		Random rd = new Random();
 		
@@ -39,16 +46,17 @@ public class Ex6 {
 		}
 	}
 	
-	public static void highestValuePerLine (int[][] array) {
-		int highest;
+	public static int[] highestValuePerLine (int[][] array) {
+		int[] highest = new int[array.length];
 		
 		for (int i = 0; i < array.length; i++) {
-			highest = array[i][0];
+			highest[i] = Integer.MIN_VALUE;
 			for (int j = 0; j < array.length; j++) {
-				if (array[i][j] > highest) {
-					System.out.println("Maior valor na linha " + (i + 1) + " localizado no índicie " + i + ", " + j);
+				if (array[i][j] > highest[i]) {
+					highest[i] = array[i][j];
 				}
 			}
 		}
+		return highest;
 	}
 }
