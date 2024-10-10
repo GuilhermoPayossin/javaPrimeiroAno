@@ -8,6 +8,7 @@ public class Ex1 {
 		
 		Scanner in = new Scanner(System.in);
 		String[] palavras = new String[5];
+		boolean status;
 		
 		for (int i = 0; i < palavras.length; i++) {
 			System.out.print("Digite uma palavra: ");
@@ -16,31 +17,34 @@ public class Ex1 {
 		
 		in.close();
 		
-		parInverso(palavras);
+		status = parInverso(palavras);
+		
+		if (status) {
+			System.out.println("Par Inverso");
+		} else {
+			System.out.println("Array normal");
+		}
+		
+		
 
 	}
 	
-	public static void parInverso (String[] palavras) {
+	public static boolean parInverso (String[] palavras) {
 		
 		String palavra, aux;
-		boolean status = false;
 		
 		for (int i = 0; i < palavras.length; i++) {
 			palavra = palavras[i];
-			for (int j = 0; j < palavra.length() - 1; j++) {
-				aux = palavras[j + 1];
+			for (int j = 0; j < palavras.length; j++) {
+				aux = palavras[j];
 				if (palavra.charAt(i) == aux.charAt(aux.length() - i - 1)) {
-					status = true;
+					return true;
 				}
-	
 			}
-			
 		}
-		if (status) {
-			System.out.println("Par Inverso");
-			return;
-		}
-		System.out.println("Não é um par inverso");
+		return false;	
+		
+		
 	}
 }
 		
