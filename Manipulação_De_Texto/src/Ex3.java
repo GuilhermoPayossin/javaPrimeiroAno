@@ -2,9 +2,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Ex3 {
-	//RecriaÃ§Ã£o do jogo da velha
+	//Recriação do jogo da forca
 	
-	static String[] words = new String[3];
+	static String[] words = {"JAVA", "FIAP", "NEXT", "ROBO"};
 	static char[] foundLetters;
 	static String hiddenWord;
 	static char letter;
@@ -15,10 +15,10 @@ public class Ex3 {
 		Scanner in = new Scanner(System.in);
 		Random rd = new Random();
 		
-		System.out.println("Digite suas palavras");
+		/*System.out.print("Digite suas palavras: ");
 		for (int i = 0; i < words.length; i++) {
 			words[i] = in.next().toUpperCase();
-		}
+		}*/
 		
 		hiddenWord = words[rd.nextInt(words.length)];
 		foundLetters = new char[hiddenWord.length()];
@@ -27,7 +27,7 @@ public class Ex3 {
 		}
 		
 		while (misses < 6 && !solved()) {
-			System.out.print("A palavra Ã©: ");
+			System.out.print("A palavra é: ");
 			for (char c : foundLetters) {
 				System.out.print(c + " ");
 			}
@@ -37,12 +37,11 @@ public class Ex3 {
 			
 			if (!verify()) {
 				misses++;
-				System.err.println("VocÃª errou pela " + misses + "Â° vez, ainda resta(m) " + (6 - misses) + " tentativa(s)");
+				System.err.println("Você errou pela " + misses + "° vez, ainda resta(m) " + (6 - misses) + " tentativa(s)");
 			}
-			in.close();
-			System.out.println();
-			
+			System.out.println();	
 		}
+		in.close();
 	}
 
 	public static boolean verify() {
